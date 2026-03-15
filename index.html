@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UstaCraft — Logo Animation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=DM+Sans:wght@400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    padding: 60px 40px;
+  }
+
+  /* ── SVG draw-on animations ── */
+
+  .wall-outer {
+    stroke-dasharray: 224;
+    stroke-dashoffset: 224;
+    animation: drawLine 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s forwards;
+  }
+
+  .wall-h {
+    stroke-dasharray: 32;
+    stroke-dashoffset: 32;
+    animation: drawLine 0.7s ease 2.1s forwards;
+  }
+
+  .wall-vt {
+    stroke-dasharray: 12;
+    stroke-dashoffset: 12;
+    animation: drawLine 0.4s ease 2.6s forwards;
+  }
+
+  .wall-vb {
+    stroke-dasharray: 28;
+    stroke-dashoffset: 28;
+    animation: drawLine 0.6s ease 2.8s forwards;
+  }
+
+  .door-arc {
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    animation: drawLine 0.5s ease 3.2s forwards;
+  }
+
+  .entrance-arc {
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    animation: drawLine 0.5s ease 3.4s forwards;
+  }
+
+  .furn-1  { opacity: 0; animation: fadeIn 0.5s ease 3.6s forwards; }
+  .furn-2  { opacity: 0; animation: fadeIn 0.5s ease 3.9s forwards; }
+  .furn-3  { opacity: 0; animation: fadeIn 0.5s ease 4.2s forwards; }
+  .furn-4  { opacity: 0; animation: fadeIn 0.5s ease 4.5s forwards; }
+  .furn-5  { opacity: 0; animation: fadeIn 0.5s ease 4.8s forwards; }
+
+  .entrance-erase {
+    stroke: #1a3d1a;
+    stroke-dasharray: 16;
+    stroke-dashoffset: 16;
+    animation: drawLine 0.3s ease 3.3s forwards;
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── WORDMARK ── */
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: wordmarkIn 1.2s cubic-bezier(0.2,0,0.1,1) 5.0s forwards;
+  }
+
+  @keyframes wordmarkIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .u { color: #1a3d1a; }
+  .c { color: #4a8c4a; }
+
+  .rule {
+    height: 1px;
+    width: 0%;
+    background: linear-gradient(90deg, #4a8c4a, transparent);
+    margin: 10px 0 8px;
+    animation: ruleGrow 0.8s ease 5.8s forwards;
+  }
+
+  @keyframes ruleGrow {
+    to { width: 100%; }
+  }
+
+  .tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    color: #4a8c4a;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 6.4s forwards;
+  }
+
+  /* ── REPLAY BUTTON ── */
+  .replay-btn {
+    margin-top: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #7a9a7a;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid #c8e6c8;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 7.2s forwards;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .replay-btn:hover { border-color: #4a8c4a; color: #4a8c4a; }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- ANIMATED FLOOR PLAN ICON -->
+  <svg width="160" height="160" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <rect width="76" height="76" rx="16" fill="#1a3d1a" opacity="0"
+      style="animation: fadeIn 0.6s ease 0.1s forwards;"/>
+
+    <rect class="wall-outer" x="10" y="10" width="56" height="56" rx="1"
+      fill="none" stroke="#c8e6c8" stroke-width="3"/>
+
+    <line class="wall-h" x1="10" y1="38" x2="42" y2="38"
+      stroke="#c8e6c8" stroke-width="2.5"/>
+
+    <path class="wall-vt" d="M42 10 L42 22"
+      stroke="#c8e6c8" stroke-width="2.5" stroke-linecap="butt"/>
+
+    <path class="wall-vb" d="M42 38 L42 66"
+      stroke="#c8e6c8" stroke-width="2.5" stroke-linecap="butt"/>
+
+    <path class="door-arc"
+      d="M42 22 Q54 22 54 34"
+      fill="none" stroke="#6abf6a" stroke-width="1" stroke-dasharray="1.5 2" opacity="0.7"/>
+
+    <line class="entrance-erase" x1="10" y1="66" x2="25" y2="66" stroke-width="4"/>
+
+    <path class="entrance-arc"
+      d="M10 66 Q10 54 22 54"
+      fill="none" stroke="#6abf6a" stroke-width="1" stroke-dasharray="1.5 2" opacity="0.6"/>
+
+    <!-- Kitchen counter -->
+    <g class="furn-1">
+      <rect x="14" y="13" width="24" height="8" rx="1" fill="#4a8c4a"/>
+      <rect x="16" y="14.5" width="5" height="5" rx="0.5" fill="none" stroke="#c8e6c8" stroke-width="0.8"/>
+      <circle cx="27" cy="17" r="1.5" fill="none" stroke="#c8e6c8" stroke-width="0.8"/>
+      <circle cx="31" cy="17" r="1.5" fill="none" stroke="#c8e6c8" stroke-width="0.8"/>
+    </g>
+
+    <!-- Dining table + chairs -->
+    <g class="furn-2">
+      <rect x="14" y="26" width="18" height="10" rx="1" fill="#4a8c4a" opacity="0.7"/>
+      <rect x="15" y="24" width="5" height="2.5" rx="0.5" fill="#6abf6a"/>
+      <rect x="22" y="24" width="5" height="2.5" rx="0.5" fill="#6abf6a"/>
+      <rect x="15" y="36.2" width="5" height="2" rx="0.5" fill="#6abf6a"/>
+      <rect x="22" y="36.2" width="5" height="2" rx="0.5" fill="#6abf6a"/>
+    </g>
+
+    <!-- Bed -->
+    <g class="furn-3">
+      <rect x="14" y="43" width="22" height="18" rx="1.5" fill="#4a8c4a"/>
+      <rect x="16" y="44.5" width="8" height="5" rx="1" fill="#c8e6c8" opacity="0.6"/>
+      <rect x="26" y="44.5" width="8" height="5" rx="1" fill="#c8e6c8" opacity="0.6"/>
+      <rect x="14" y="55" width="5" height="5" rx="0.5" fill="#3a7a3a" opacity="0.8"/>
+      <circle cx="16.5" cy="57.5" r="1" fill="#c8e6c8" opacity="0.5"/>
+    </g>
+
+    <!-- Sofa -->
+    <g class="furn-4">
+      <rect x="46" y="42" width="20" height="10" rx="1.5" fill="#4a8c4a"/>
+      <rect x="56" y="42" width="10" height="18" rx="1.5" fill="#4a8c4a"/>
+      <rect x="46" y="42" width="20" height="3" rx="1" fill="#3a7a3a"/>
+      <rect x="56" y="42" width="3" height="18" rx="1" fill="#3a7a3a"/>
+    </g>
+
+    <!-- Coffee table + wardrobe accent -->
+    <g class="furn-5">
+      <rect x="46" y="54" width="9" height="6" rx="1" fill="#3a7a3a" opacity="0.8"/>
+      <rect x="43" y="42" width="2.5" height="22" rx="0.5" fill="#6abf6a" opacity="0.5"/>
+    </g>
+
+  </svg>
+
+  <!-- WORDMARK -->
+  <div class="wordmark">
+    <div class="brand"><span class="u">Usta</span><span class="c">Craft</span></div>
+    <div class="rule"></div>
+    <div class="tagline">Mebel &nbsp;·&nbsp; Doors &nbsp;·&nbsp; Interior</div>
+  </div>
+
+</div>
+
+<button class="replay-btn" onclick="replayAnimation()">↺ &nbsp; Replay</button>
+
+<script>
+function replayAnimation() {
+  const el = document.querySelector('.stage');
+  const wm = document.querySelector('.wordmark');
+  const btn = document.querySelector('.replay-btn');
+  const rule = document.querySelector('.rule');
+  const tag = document.querySelector('.tagline');
+
+  const parent = el.parentNode;
+  const clone = el.cloneNode(true);
+  parent.replaceChild(clone, el);
+
+  wm.style.animation = 'none';
+  wm.style.opacity = '0';
+  rule.style.animation = 'none';
+  rule.style.width = '0%';
+  tag.style.animation = 'none';
+  tag.style.opacity = '0';
+  btn.style.opacity = '0';
+
+  setTimeout(() => {
+    wm.style.animation = 'wordmarkIn 1.2s cubic-bezier(0.2,0,0.1,1) 5.0s forwards';
+    rule.style.animation = 'ruleGrow 0.8s ease 5.8s forwards';
+    tag.style.animation = 'fadeIn 0.8s ease 6.4s forwards';
+    btn.style.animation = 'fadeIn 0.6s ease 7.2s forwards';
+  }, 50);
+}
+</script>
+
+</body>
+</html>
